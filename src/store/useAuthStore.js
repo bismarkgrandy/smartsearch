@@ -9,7 +9,7 @@ export const useAuthStore = create((set, get)=>({
 
     checkAuth: async () => {
         try{
-           const res = await axiosInstance.get("auth/user/me");
+           const res = await axiosInstance.get("/auth/user/me");
            set({authUser:res.data});
            console.log("authUser in checkAuth :" , res.data);
         } catch (error){
@@ -22,7 +22,7 @@ export const useAuthStore = create((set, get)=>({
 
     signup: async (userData) => {
         try {
-          const response = await axiosInstance.post("http://localhost:5001/api/auth/signup", userData);
+          const response = await axiosInstance.post("/auth/signup", userData);
           set({ authUser: response.data });
           return response.data; // Correctly returning API response
         } catch (error) {
@@ -37,7 +37,7 @@ export const useAuthStore = create((set, get)=>({
    
     login: async (userData) => {
         try{
-            const response = await axiosInstance.post("http://localhost:5001/api/auth/login", userData);
+            const response = await axiosInstance.post("/auth/login", userData);
             set({authUser: response.data});
             return response.data;
 
